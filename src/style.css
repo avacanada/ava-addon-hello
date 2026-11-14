@@ -1,0 +1,56 @@
+/* Hello sits inside Ava, so it wears Ava's colours: they arrive as MCP Apps'
+   standard style variables (--color-…), and the values after the commas are
+   Ava's own tokens, for when they haven't arrived yet. Light, dark, and the
+   system's choice: Ava sets data-theme; without it the system decides. */
+:root {
+  --ground: var(--color-background-primary, #fbfaf8);
+  --card: var(--color-background-secondary, #ffffff);
+  --ink: var(--color-text-primary, #1c1a17);
+  --soft: var(--color-text-secondary, #55514a);
+  --edge: var(--color-border-primary, #e3dfd8);
+  --violet: #6646EE;
+  --ui: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: var(--color-background-primary, #1a1816);
+    --card: var(--color-background-secondary, #22201d);
+    --ink: var(--color-text-primary, #eeeae4);
+    --soft: var(--color-text-secondary, #bdb7ae);
+    --edge: var(--color-border-primary, #2f2c28);
+    --violet: #A88FFF;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] { --violet: #A88FFF; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--ground); color: var(--ink); }
+body { font: 14px/1.5 var(--ui); -webkit-font-smoothing: antialiased; }
+main { max-width: 36rem; margin: 0 auto; padding: 24px 16px; }
+h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+.hint { color: var(--soft); margin: 0 0 16px; }
+
+form { display: flex; gap: 8px; }
+input {
+  flex: 1; min-width: 0; font: inherit; color: inherit;
+  background: var(--card); border: 1px solid var(--edge); border-radius: 10px; padding: 8px 12px;
+}
+input:focus-visible, button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+button {
+  font: inherit; font-weight: 600; cursor: pointer;
+  color: #fff; background: var(--violet); border: 0; border-radius: 10px; padding: 8px 14px;
+}
+button.quiet { color: var(--soft); background: none; padding: 4px 8px; font-weight: 400; }
+button.quiet:hover { color: var(--ink); }
+
+.status { min-height: 1.5em; margin: 8px 0; color: var(--soft); }
+ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  background: var(--card); border: 1px solid var(--edge); border-radius: 12px; padding: 10px 14px;
+}
+li span { overflow-wrap: anywhere; }
+time { color: var(--soft); font-size: 12px; white-space: nowrap; }
+footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: var(--soft); font-size: 13px; }

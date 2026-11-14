@@ -1,0 +1,16 @@
+# Hello's listing: what the catalogue (avacanada/ava-catalogue), Ava's
+# Settings > Add-ons and heyava.ca/addons show about it. The catalogue reads
+# this folder at the commit its entry pins, checks it, and copies it into the
+# signed package and the signed index. The name, version and short
+# description are the manifest's (public/manifest.json), never repeated here.
+category = "developer"
+icon = "icon.svg"
+long_description = """
+Hello is a guestbook: type a name, or ask Ava to say hello to someone, and a greeting appears in the panel. That's all it does, on purpose.
+
+It's the example add-on for developers. Its source is a short tutorial in the shape every add-on has: a manifest, a panel, one tool for Ava, the add-on's own storage, and assets served from its own bundle. Hello keeps its greetings on this computer and can't reach the internet."""
+
+# Up to four screenshots: PNG, at most 1 MiB, 320-2560 wide, 200-1600 high.
+# [[screenshots]]
+# file = "screenshot.png"
+# caption = "One line, at most 120 characters."

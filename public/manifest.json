@@ -1,0 +1,24 @@
+{
+  "id": "hello",
+  "name": "Hello",
+  "version": "0.1.0",
+  "description": "A guestbook that says hello. The smallest real Ava add-on, written to be read.",
+  "entry": "index.html",
+  "icon": "icon.svg",
+  "permissions": ["storage", "tools"],
+  "egress": [],
+  "tools": [
+    {
+      "name": "greet",
+      "description": "Say hello to someone in the person's Hello guestbook: writes 'Hello, <name>!' into it and shows it in the Hello panel. It's kept in Hello's own storage on this computer; nothing leaves it.",
+      "effect": "inside",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Who to greet, e.g. 'Ada'. At most 60 characters." }
+        },
+        "required": ["name"]
+      }
+    }
+  ]
+}
