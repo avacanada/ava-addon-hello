@@ -10,7 +10,7 @@
 // manifest's class holds, and a tool that claims more, or is seen doing more
 // (reaching the network from an `inside` tool, say), is made stricter.
 import { App } from '@modelcontextprotocol/ext-apps/app-with-deps'
-import type { Effect, Transport } from '@addiscorp/ava-addon'
+import type { Effect, Transport } from '@avacanada/ava-addon'
 import manifest from '../public/manifest.json' with { type: 'json' }
 import type { Guestbook } from './greetings.ts'
 

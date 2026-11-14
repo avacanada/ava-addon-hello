@@ -16,7 +16,7 @@ It shows you how to make:
   requires;
 - a **listing** for the catalogue, the website and Ava's Settings.
 
-It's built on [`@addiscorp/ava-addon`](https://github.com/avacanada/ava-addon),
+It's built on [`@avacanada/ava-addon`](https://github.com/avacanada/ava-addon),
 the SDK (types for `window.ava` and the manifest), and the official MCP Apps
 SDK, [`@modelcontextprotocol/ext-apps`](https://www.npmjs.com/package/@modelcontextprotocol/ext-apps).
 
@@ -101,10 +101,10 @@ the same rules here first.
 
 [`index.html`](index.html) loads `/ava.js` first. Ava serves that file in every
 add-on's origin, matched to the Ava it runs in, and it sets up `window.ava`.
-Never bundle a copy. `@addiscorp/ava-addon` only types it:
+Never bundle a copy. `@avacanada/ava-addon` only types it:
 
 ```ts
-import { ava } from '@addiscorp/ava-addon'
+import { ava } from '@avacanada/ava-addon'
 const client = ava()          // throws outside Ava
 ```
 

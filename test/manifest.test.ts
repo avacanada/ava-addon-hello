@@ -6,7 +6,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync, existsSync, statSync } from 'node:fs'
 import { join } from 'node:path'
-import type { Manifest } from '@addiscorp/ava-addon'
+import type { Manifest } from '@avacanada/ava-addon'
 
 const here = join(import.meta.dirname, '..')
 const raw = JSON.parse(readFileSync(join(here, 'public', 'manifest.json'), 'utf8'))

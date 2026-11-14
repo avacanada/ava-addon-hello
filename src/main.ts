@@ -9,7 +9,7 @@ import '@fontsource/dm-sans/400.css'
 import '@fontsource/dm-sans/600.css'
 import './style.css'
 import { applyDocumentTheme, applyHostStyleVariables, type McpUiHostContext } from '@modelcontextprotocol/ext-apps/app-with-deps'
-import { ava } from '@addiscorp/ava-addon'
+import { ava } from '@avacanada/ava-addon'
 import { guestbook, greetingText, MAX_NAME, type Greeting } from './greetings.ts'
 import { handlers, view } from './tools.ts'
 
