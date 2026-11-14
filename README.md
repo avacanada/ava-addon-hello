@@ -220,29 +220,43 @@ PNGs of at most 1 MiB, 320–2560 by 200–1600 pixels.
   a pinned commit and signed; Ava checks the signature, and that the
   package's manifest asks for exactly what its install prompt showed.
 
-## Run it in Ava, as a dev add-on
+## Run it in Ava, in developer mode
 
-A debug build of Ava (from Ava's source) loads add-ons from its repo as well
-as the installed ones: every `addons/<name>/dist/` that has a
-`manifest.json`, and every folder in `addons/dev/`. Release builds never do.
+Any Ava can run an add-on from a folder on your computer once you turn on
+developer mode. You don't need Ava's source or a debug build.
 
-1. Build Hello: `npm run build`.
-2. In your Ava checkout, link this repo in as `addons/hello`, so Ava finds
-   `addons/hello/dist/`:
+1. Build Hello: `npm run build`. That writes the bundle to `dist/`.
+2. In Ava, open Settings › Add-ons and turn on **Developer mode**. Ava warns
+   you that add-ons loaded from a folder aren't checked by her catalogue.
+3. Click **Load add-on from folder…** and pick this repo's folder (or its
+   `dist/`). Ava's prompt lists what Hello asks for. Click Load.
+4. Hello appears in the add-on drawer labelled **Local**. Open it and type a
+   name, or ask Ava to "say hello to Ada in Hello". Ava sees the tool as
+   `local-hello_greet`.
+5. After the next `npm run build`, click **Reload** on Hello's card in
+   Settings › Add-ons. Ava reads the folder again, manifest included, and
+   reloads the open panel in place, so you never restart Ava. If a build asks
+   for more than the loaded one (a new permission, host or tool), Ava asks
+   you first, the same way a catalogue update does.
 
-   ```sh
-   ln -s /path/to/ava-addon-hello /path/to/ava/addons/hello
-   ```
+What developer mode changes, and what it doesn't:
 
-3. Start Ava's debug build there (`bun run tauri dev`). Hello is in the
-   add-on drawer. Open it, type a name, then ask Ava to "say hello to Ada in
-   Hello".
-4. After `npm run build`, close and reopen Hello's panel: Ava serves the
-   bundle from disk. A manifest change needs Ava restarted, because Ava reads
-   manifests when it starts.
+- **The signature is the only thing skipped.** A local add-on gets the same
+  sandbox, CSP, bridge, grants and egress gate as a catalogue add-on, and
+  its manifest is checked the same way. It has no publisher, and nobody has
+  reviewed it.
+- **It has its own id.** In Ava your add-on is `local-<id>` (`local-hello`),
+  so its storage, grants and web data are never mixed up with the catalogue
+  copy's, and both can be installed at once. Keep your manifest's `id` to 26
+  characters so `local-` fits.
+- **Off means off.** Turning developer mode off unloads every local add-on.
+  Their storage and grants stay with their local id until you turn
+  developer mode back on, or until you click Remove. Remove never touches
+  your folder.
 
-Ava's debug build can also be driven by a script (`--data`, `--script` with
-`open hello`, `tool hello_greet {…}`, `snap …`; see
+Ava's own repo can also drive a debug build with a script (`--data`,
+`--script` with `devmode on`, `local /path/to/ava-addon-hello`,
+`open local-hello`, `tool local-hello_greet {…}`, `snap …`; see
 `src-tauri/src/addons/dev.rs`), and its QA runner can run a suite with an
 add-on in it (`qa/README.md`, "Add-ons").
 
