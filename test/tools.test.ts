@@ -3,7 +3,7 @@
 // messages Ava's host sends (src-tauri/src/addons/mcp.rs in avacanada/ava).
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import type { Effect, Transport } from '@addiscorp/ava-addon'
+import type { Effect, Transport } from '@avacanada/ava-addon'
 import { guestbook, KEY } from '../src/greetings.ts'
 import { handlers, view } from '../src/tools.ts'
 import manifest from '../public/manifest.json' with { type: 'json' }

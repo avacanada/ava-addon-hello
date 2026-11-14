@@ -4,7 +4,7 @@
 // Storage is Ava's key/value store for this add-on alone (the `storage`
 // permission): `ava().storage`. Values are JSON. Another add-on can't read
 // it, and it stays on this computer.
-import type { AvaClient } from '@addiscorp/ava-addon'
+import type { AvaClient } from '@avacanada/ava-addon'
 
 /** The part of `ava().storage` the guestbook uses (an in-memory one in tests). */
 export type Store = Pick<AvaClient['storage'], 'get' | 'set' | 'delete'>
